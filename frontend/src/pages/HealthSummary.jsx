@@ -35,6 +35,8 @@ export default function HealthSummary() {
       };
 
       const res = await getFilteredMedicalRecords(formattedFilters);
+      console.log("API Response: ", res.data);
+      
       setFilteredData(res.data); // 🔄 Data set kiya charts ke liye
     } catch (err) {
       console.error("Error fetching medical records:", err);

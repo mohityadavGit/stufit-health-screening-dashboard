@@ -1,7 +1,8 @@
 import axios from "axios";
 import tokenService from "../services/tokenService";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL_MEDICAL;
+// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL_MEDICAL;
+const API_BASE_URL = "http://localhost:3000/api/medical";
 
 const api = axios.create({ baseURL: API_BASE_URL });
 

@@ -25,14 +25,22 @@ export const signup = async (req, res) => {
 // 🔐 Admin Login → Sends OTP
 export const login = async (req, res) => {
   try {
+    console.log("Login route hit");
+    
     const { email, password } = req.body; // email instead of username
 
     const admin = await Admin.findOne({ username: email });
-    if (!admin) return res.status(401).json({ message: "Invalid credentials" });
+    
+    if (!admin) {
+      console.log("User not found");
+      return res.status(401).json({ message: "User not found" });
+    }
 
     const isMatch = await bcrypt.compare(password, admin.password);
-    if (!isMatch)
+    if (!isMatch) {
+      console.log("Invalid credentials")
       return res.status(401).json({ message: "Invalid credentials" });
+    }
 
     const otp = generateOtp();
 
